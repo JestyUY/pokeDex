@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Header } from "./Components/header";
 
 function App() {
   const [pokeData, setPokeData] = useState(null); // Initialize pokeData state as null
@@ -24,14 +25,22 @@ function App() {
 
   // Render the actual content using the pokeData
   return (
-    <>
-      <h1>Pokemon List</h1>
-      <ul>
+    <main className="bg-red-700 w-screen h-screen flex flex-col items-center">
+      <Header />
+      <ul className="flex flex-wrap w-[95%]  bg-slate-300 h-[97%] gap-y-3 justify-around ">
         {pokeData.results.map((pokemon) => (
-          <li key={pokemon.name}>{pokemon.name}</li>
+          <li
+            className="w-[104px] h-[108px] text-center flex flex-col relative "
+            key={pokemon.name}
+          >
+            <span className="right-0 absolute"># {}</span>
+            <span className="pt-6 px-2 pb-1 rounded-t-lg bg-slate-400  absolute bottom-0 left-0 right-0">
+              {pokemon.name}
+            </span>
+          </li>
         ))}
       </ul>
-    </>
+    </main>
   );
 }
 
