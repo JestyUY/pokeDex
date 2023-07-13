@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "./Components/header";
+import { PokeCard } from "./Components/pokeCard";
+import { SearchBar } from "./Components/searchBar";
 
 function App() {
   // const [pokeData, setPokeData] = useState(null); // Initialize pokeData state as null
@@ -25,13 +27,14 @@ function App() {
       //usamos fetch para llamar a una API Rest
       const httpRequest = await fetch("https://pokeapi.co/api/v2/pokemon/");
       const respuesta = await httpRequest.json();
-      const pokemones = respuesta.results.map(async (poke) => {
-        const respuestaURL = await fetch(poke.url).then((response) =>
-          response.json()
-        );
-        return respuestaURL;
-      });
-      Promise.all(pokemones).then((data) => setPokes(data));
+      // const pokemones = respuesta.results.map(async (poke) => {
+      //   const respuestaURL = await fetch(poke.url).then((response) =>
+      //     response.json()
+      //   );
+      //   return respuestaURL;
+      // });
+      // Promise.all(pokemones).then((data) => setPokes(data));
+      setPokes(respuesta.results);
     };
 
     getPoke();
@@ -42,13 +45,12 @@ function App() {
   return (
     <main className="bg-red-700 w-screen h-screen flex flex-col items-center">
       <Header />
-
-      {pokes.map((poke, index) => (
-        <>
-          <span key={index}> {poke.name}</span>
-          <span>{poke.abilities[0].ability.name}</span>
-        </>
-      ))}
+      <SearchBar />
+      <ul className="relative flex flex-wrap justify-around gap-y-4">
+        {pokes.map((poke, index) => (
+          <PokeCard pokemon={poke} key={index} />
+        ))}
+      </ul>
     </main>
   );
 }
