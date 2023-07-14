@@ -14,7 +14,7 @@ export function PokeCard({ name, id }) {
       <img
         className="scale-100 absolute z-10"
         src={`
-https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+              https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
         alt=""
       />
 
