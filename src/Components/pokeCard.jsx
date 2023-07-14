@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export function PokeCard({ pokemon }) {
+  const navigate = useNavigate();
   const [currentPoke, setCurrentPoke] = useState({});
   useEffect(() => {
-    //usamos useEffect para llamar a la api una vez que se monta el componente
     const getPoke = async () => {
-      //usamos fetch para llamar a una API Rest
       // eslint-disable-next-line react/prop-types
       const httpRequest = await fetch(pokemon.url);
       const respuesta = await httpRequest.json();
-      console.log(respuesta);
+
       setCurrentPoke(respuesta);
     };
 
@@ -18,8 +18,22 @@ export function PokeCard({ pokemon }) {
     // eslint-disable-next-line react/prop-types
   }, []);
 
+  const [filterStatus, setFilterStatus] = useState("text");
+  function handlerClick() {
+    if (filterStatus === "text") {
+      setFilterStatus("number");
+    } else {
+      setFilterStatus("text");
+    }
+  }
   return (
-    <li className="rounded-lg w-[104px] h-[108px] bg-slate-200 flex flex-col justify-center relative">
+    <li
+      className="cursor-pointer rounded-lg w-[104px] h-[108px] bg-slate-200 flex flex-col justify-center relative drop-shadow-[5px_5px_5px_rgba(0,0,0,0.25)]"
+      onClick={() => {
+        navigate(`/${currentPoke?.id}`);
+        handlerClick;
+      }}
+    >
       <img
         className="scale-100 absolute z-10"
         src={currentPoke?.sprites?.front_default}

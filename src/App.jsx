@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Header } from "./Components/header";
 import { PokeCard } from "./Components/pokeCard";
 import { SearchBar } from "./Components/searchBar";
+import { PokeCardDetailed } from "./Components/pokeCardDetailed";
 
 function App() {
   // const [pokeData, setPokeData] = useState(null); // Initialize pokeData state as null
@@ -43,16 +44,27 @@ function App() {
   console.log(pokes);
 
   return (
-    <main className="bg-red-700 w-screen h-screen flex flex-col items-center">
+    <main className="bg-red-700 w-screen h-full flex flex-col items-center">
       <Header />
       <SearchBar />
-      <ul className="relative flex flex-wrap justify-around gap-y-4">
+      <ul className="relative flex flex-wrap justify-around gap-y-4 bg-slate-200 px-2 py-4 rounded-xl w-[97%]">
         {pokes.map((poke, index) => (
           <PokeCard pokemon={poke} key={index} />
         ))}
       </ul>
+
+      <PokeCardDetailed pokemon={pokes} />
     </main>
   );
 }
 
 export default App;
+
+//  const [filterStatus, setFilterStatus] = useState("text");
+//  function handlerClick() {
+//    if (filterStatus === "text") {
+//      setFilterStatus("number");
+//    } else {
+//      setFilterStatus("text");
+//    }
+//  }
