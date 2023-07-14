@@ -1,4 +1,4 @@
-export function SearchBar() {
+export function SearchBar({ handlerClick }) {
   const lupa = (
     <svg
       width="16"
@@ -78,7 +78,9 @@ export function SearchBar() {
     <div className="flex p-6 w-screen">
       <button className="bg-white rounded-l-xl p-2">{lupa}</button>
       <input className="w-screen rounded-r-xl" type="search" />
-      <button className="ml-3">{textFilter}</button>
+      <button onClick={handlerClick} className="ml-3">
+        {textFilter}
+      </button>
     </div>
   );
 }

@@ -13,15 +13,30 @@ function App() {
       const respuesta = await httpRequest.json();
 
       setPokes(respuesta.results);
-      console.log(respuesta.results);
     };
     getPoke();
   }, []);
 
+  const [sortPoke, setSortPoke] = useState("text");
+
+  function filter() {
+    if (sortPoke === "text") {
+      setSortPoke("number");
+      const newSort = [...pokes];
+      const newNewSort = newSort.sort((a, b) => a.name.localeCompare(b.name));
+      setPokes(newNewSort);
+    } else {
+      setSortPoke("text");
+      const newSortt = [...pokes];
+      const newNewSortt = newSortt.sort();
+      setPokes(newNewSortt);
+      console.log(sortPoke);
+    }
+  }
   return (
     <main className="bg-red-700 w-screen h-full flex flex-col items-center">
       <Header />
-      <SearchBar />
+      <SearchBar handlerClick={filter} />
       <ul className="relative flex flex-wrap justify-around gap-y-4 bg-slate-200 px-2 py-4 rounded-xl w-[97%]">
         {pokes.map((poke, index) => (
           <PokeCard
