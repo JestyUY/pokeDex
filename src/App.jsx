@@ -197,7 +197,7 @@ function App() {
         handlerClick={filter}
         onChange={searchingBar}
       />
-      <ul className="relative flex flex-wrap justify-around gap-y-4 bg-slate-200 px-2 py-4 mb-2 rounded-xl w-[97%]">
+      <ul className="relative flex flex-wrap justify-around gap-y-4 bg-backGround px-2 py-4 mb-2 rounded-xl w-[97%]">
         {filterQ.map((poke, index) => (
           <PokeCard
             name={poke.name}

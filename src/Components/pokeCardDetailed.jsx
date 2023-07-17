@@ -1,5 +1,88 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { PastillasClass } from "./PastillaClass";
+
+const backArrow = (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g filter="url(#filter0_d_1132_572)">
+      <path
+        d="M14.8999 25.9666L5.63325 16.6999C5.52214 16.5888 5.44436 16.4777 5.39992 16.3666C5.35547 16.2555 5.33325 16.1333 5.33325 15.9999C5.33325 15.8666 5.35547 15.7444 5.39992 15.6333C5.44436 15.5222 5.52214 15.4111 5.63325 15.2999L14.9333 5.99994C15.111 5.82216 15.3333 5.73328 15.5999 5.73328C15.8666 5.73328 16.0999 5.83328 16.2999 6.03328C16.4999 6.23328 16.5999 6.46661 16.5999 6.73328C16.5999 6.99994 16.4999 7.23328 16.2999 7.43328L8.73325 14.9999H25.2666C25.5555 14.9999 25.7944 15.0944 25.9833 15.2833C26.1721 15.4722 26.2666 15.7111 26.2666 15.9999C26.2666 16.2888 26.1721 16.5277 25.9833 16.7166C25.7944 16.9055 25.5555 16.9999 25.2666 16.9999H8.73325L16.3333 24.5999C16.511 24.7777 16.5999 24.9999 16.5999 25.2666C16.5999 25.5333 16.4999 25.7666 16.2999 25.9666C16.0999 26.1666 15.8666 26.2666 15.5999 26.2666C15.3333 26.2666 15.0999 26.1666 14.8999 25.9666Z"
+        fill="white"
+      />
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_1132_572"
+        x="1.33325"
+        y="2.73328"
+        width="28.9333"
+        height="28.5333"
+        filterUnits="userSpaceOnUse"
+        colorInterpolationFilters="sRGB"
+      >
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feMorphology
+          radius="1"
+          operator="dilate"
+          in="SourceAlpha"
+          result="effect1_dropShadow_1132_572"
+        />
+        <feOffset dy="1" />
+        <feGaussianBlur stdDeviation="1.5" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_1132_572"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_1132_572"
+          result="shape"
+        />
+      </filter>
+    </defs>
+  </svg>
+);
+const pokeBackground = (
+  <svg
+    width="208"
+    height="208"
+    viewBox="0 0 208 208"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g opacity="0.1">
+      <path
+        d="M128.762 104C128.762 117.676 117.676 128.762 104 128.762C90.3244 128.762 79.2381 117.676 79.2381 104C79.2381 90.3244 90.3244 79.2381 104 79.2381C117.676 79.2381 128.762 90.3244 128.762 104Z"
+        fill="white"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M104 208C156.393 208 199.738 169.257 206.947 118.857H146.035C139.917 136.169 123.407 148.571 104 148.571C84.5933 148.571 68.0835 136.169 61.9648 118.857H1.05322C8.26235 169.257 51.6067 208 104 208ZM61.9648 89.1429H1.05322C8.26235 38.7431 51.6067 0 104 0C156.393 0 199.738 38.7431 206.947 89.1429H146.035C139.917 71.8314 123.407 59.4286 104 59.4286C84.5933 59.4286 68.0835 71.8314 61.9648 89.1429ZM128.762 104C128.762 117.676 117.676 128.762 104 128.762C90.3244 128.762 79.2381 117.676 79.2381 104C79.2381 90.3244 90.3244 79.2381 104 79.2381C117.676 79.2381 128.762 90.3244 128.762 104Z"
+        fill="white"
+      />
+    </g>
+  </svg>
+);
 
 export function PokeCardDetailed() {
   let { pokeID } = useParams();
@@ -19,15 +102,50 @@ export function PokeCardDetailed() {
     getPoke();
     // eslint-disable-next-line react/prop-types
   }, []);
+
   return poke ? (
-    <div>
+    <div
+      className={`bg ${poke.types[0].type.name}   w-screen h-screen relative flex flex-col`}
+    >
       {" "}
-      <Link to={"/"}>
-        {" "}
-        <button className="h-6 w-5 bg-gray-600"></button>
-      </Link>
-      <span className="text-xl">{poke?.name}</span>
-      <img src={poke.sprites} alt="" />
+      <nav className="flex p-4 gap-2">
+        <Link to={"/"}>
+          {" "}
+          <button className={`h-6 w-5`}>{backArrow}</button>
+        </Link>
+        <span className="text-4xl text-white pl-4">{poke?.name}</span>
+        <span className="text-white text-xl absolute right-6 top-5">
+          #{poke.id}
+        </span>
+      </nav>
+      <div className="absolute top-5 right-5 scale-110 z-10">
+        {pokeBackground}
+      </div>
+      <img
+        className="  absolute mx-auto top-20 left-0 right-0 z-20 w-[60%] h-[30%]"
+        src={poke.sprites.other.dream_world.front_default}
+        alt=""
+      />
+      <section className="w-[96%] flex flex-col h-[60%]  absolute bottom-3 left-0 right-0  mx-auto rounded-lg bg-lightGray ">
+        <div className="w-[95%] flex justify-center mt-3 gap-4">
+          <PastillasClass
+            typeColor={`bg ${poke.types[0].type.name}`}
+            type={poke.types[0].type.name}
+          />
+
+          {poke.types.length > 1 ? (
+            <PastillasClass
+              typeColor={`bg ${poke.types[1].type.name}`}
+              type={poke?.types[1].type.name}
+            />
+          ) : null}
+        </div>
+        <span
+          className={`text ${poke.types[0].type.name} justify-center flex mt-3 text-2xl font-semibold`}
+        >
+          About
+        </span>
+      </section>
     </div>
   ) : (
     <h2>Loading...</h2>

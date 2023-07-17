@@ -1,4 +1,5 @@
-export function SearchBar({ handlerClick, buttonIcon, onChange, values }) {
+// eslint-disable-next-line react/prop-types
+export function SearchBar({ handlerClick, buttonIcon, onChange }) {
   const lupa = (
     <svg
       width="16"
