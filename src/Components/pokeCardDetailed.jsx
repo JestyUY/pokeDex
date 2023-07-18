@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PastillasClass } from "./PastillaClass";
+import { AboutCard } from "./AboutCard";
 
 const backArrow = (
   <svg
@@ -145,6 +146,12 @@ export function PokeCardDetailed() {
         >
           About
         </span>
+        <AboutCard
+          weight={poke.weight}
+          height={poke.height}
+          moves={poke.moves[0].move.name}
+          moves2={poke.moves[1].move.name}
+        />
       </section>
     </div>
   ) : (
