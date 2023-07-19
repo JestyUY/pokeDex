@@ -100,8 +100,8 @@ export function BaseStats(props) {
     backgroundColor: props.type,
   };
   return (
-    <ul className="w-[97%] [&>li]:px-4">
-      <li className="flex  ">
+    <ul className="w-[97%] [&>li]:px-4 ">
+      <li className="flex   ">
         <span
           className={`text ${props.type}   border-r border-slate-400 w-[15%] `}
         >
@@ -110,11 +110,11 @@ export function BaseStats(props) {
         <span className="px-1 w-[10%]">{props.hpValue}</span>
         <div className="flex w-[75%]">
           <span
-            className={` bg ${props.type}   block self-center`}
+            className={` bg ${props.type}   block self-center transition-all rounded-l-xl `}
             style={hpBarStyles}
           ></span>
           <span
-            className={` bg ${props.type}   block self-center opacity-20`}
+            className={` bg ${props.type}   block self-center opacity-20 transition-all rounded-r-xl`}
             style={secondBar}
           ></span>
         </div>
@@ -129,11 +129,11 @@ export function BaseStats(props) {
         <span className="px-1 w-[10%]">{props.atkValue}</span>
         <div className="flex w-[75%]">
           <span
-            className={` bg ${props.type}   block self-center`}
+            className={` bg ${props.type}   block self-center transition-all rounded-l-xl`}
             style={atkBarStyles}
           ></span>
           <span
-            className={` bg ${props.type}   block self-center opacity-20`}
+            className={` bg ${props.type}   block self-center opacity-20 transition-all  rounded-r-xl`}
             style={secondAtkBar}
           ></span>
         </div>
@@ -148,11 +148,11 @@ export function BaseStats(props) {
         <span className="px-1 w-[10%]">{props.defValue}</span>
         <div className="flex w-[75%]">
           <span
-            className={` bg ${props.type}   block self-center`}
+            className={` bg ${props.type}   block self-center transition-all rounded-l-xl`}
             style={defBarStyles}
           ></span>
           <span
-            className={` bg ${props.type}   block self-center opacity-20`}
+            className={` bg ${props.type}   block self-center opacity-20 transition-all  rounded-r-xl`}
             style={secondDefBar}
           ></span>
         </div>
@@ -167,11 +167,11 @@ export function BaseStats(props) {
         <span className="px-1 w-[10%]">{props.spatkValue}</span>
         <div className="flex w-[75%]">
           <span
-            className={` bg ${props.type}   block self-center`}
+            className={` bg ${props.type}   block self-center transition-all rounded-l-xl`}
             style={spatkBarStyles}
           ></span>
           <span
-            className={` bg ${props.type}   block self-center opacity-20`}
+            className={` bg ${props.type}   block self-center opacity-20 transition-all  rounded-r-xl`}
             style={secondSpatkBar}
           ></span>
         </div>
@@ -179,18 +179,18 @@ export function BaseStats(props) {
 
       <li className="flex  ">
         <span
-          className={`text ${props.type}   border-r border-slate-400 w-[15%] `}
+          className={`text ${props.type}   border-r border-slate-400 w-[15%]  `}
         >
           SPDEF
         </span>{" "}
         <span className="px-1 w-[10%]">{props.spdefValue}</span>
         <div className="flex w-[75%]">
           <span
-            className={` bg ${props.type}   block self-center`}
+            className={` bg ${props.type}   block self-center transition-all rounded-l-xl`}
             style={spdefBarStyles}
           ></span>
           <span
-            className={` bg ${props.type}   block self-center opacity-20`}
+            className={` bg ${props.type}   block self-center opacity-20 transition-all  rounded-r-xl`}
             style={secondspDefBar}
           ></span>
         </div>
@@ -205,11 +205,11 @@ export function BaseStats(props) {
         <span className="px-1 w-[10%]">{props.spdValue}</span>
         <div className="flex w-[75%]">
           <span
-            className={` bg ${props.type}   block self-center`}
+            className={` bg ${props.type}   block self-center transition-all rounded-l-xl`}
             style={spdBarStyles}
           ></span>
           <span
-            className={` bg ${props.type}   block self-center opacity-20 `}
+            className={` bg ${props.type}   block self-center opacity-20 transition-all  rounded-r-xl`}
             style={secondspdBar}
           ></span>
         </div>

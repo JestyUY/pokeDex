@@ -32,7 +32,7 @@ export function AboutCard({ weight, height, moves, moves2 }) {
   let heightCalculated = height * 0.1;
   let newHeight = heightCalculated.toFixed(2);
 
-  let fixedWeight = weight * 0.1;
+  let fixedWeight = (weight * 0.1).toFixed(2);
 
   return (
     <section className="flex place-content-evenly text-black z-30 w-[95%] mx-auto h-[16%]  divide-gray-500 text-center">
