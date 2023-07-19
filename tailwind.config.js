@@ -27,6 +27,9 @@ export default {
         lightGray: "#E0E0E0",
         backGround: "#f7f7f7",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],

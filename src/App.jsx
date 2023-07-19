@@ -157,7 +157,6 @@ function App() {
       setPokes(() => [...newNewSortt]);
 
       // setPokes(newNewSortt);
-      console.log(pokes);
     } else {
       setSortPoke("text");
       const newSortt = [...pokes];
@@ -190,7 +189,7 @@ function App() {
     setFilterQ(results);
   };
   return (
-    <main className="bg-red-700 w-screen h-full flex flex-col items-center">
+    <main className="bg-red-700 w-screen h-full flex flex-col items-center font-poppins">
       <Header />
       <SearchBar
         buttonIcon={sortPoke === "text" ? numIcon : textFilter}

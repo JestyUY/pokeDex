@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PastillasClass } from "./PastillaClass";
 import { AboutCard } from "./AboutCard";
+import { Parrafo } from "./Parrafo";
+import { BaseStats } from "./BaseStats";
 
 const backArrow = (
   <svg
@@ -104,6 +106,22 @@ export function PokeCardDetailed() {
     // eslint-disable-next-line react/prop-types
   }, []);
 
+  const [pokeAbout, setPokeAbout] = useState();
+  useEffect(() => {
+    const getPoke = async () => {
+      // eslint-disable-next-line react/prop-types
+      const httpRequest = await fetch(
+        `https://pokeapi.co/api/v2/pokemon-species/${pokeID}`
+      );
+      const respuesta = await httpRequest.json();
+
+      setPokeAbout(respuesta);
+    };
+
+    getPoke();
+    // eslint-disable-next-line react/prop-types
+  }, []);
+
   return poke ? (
     <div
       className={`bg ${poke.types[0].type.name}   w-screen h-screen relative flex flex-col`}
@@ -127,7 +145,7 @@ export function PokeCardDetailed() {
         src={poke.sprites.other.dream_world.front_default}
         alt=""
       />
-      <section className="w-[96%] flex flex-col h-[60%]  absolute bottom-3 left-0 right-0  mx-auto rounded-lg bg-lightGray ">
+      <section className="w-[96%] flex flex-col h-[60%]  absolute bottom-3 left-0 right-0 gap-4  mx-auto rounded-lg bg-lightGray ">
         <div className="w-[95%] flex justify-center mt-3 gap-4">
           <PastillasClass
             typeColor={`bg ${poke.types[0].type.name}`}
@@ -142,7 +160,7 @@ export function PokeCardDetailed() {
           ) : null}
         </div>
         <span
-          className={`text ${poke.types[0].type.name} justify-center flex mt-3 text-2xl font-semibold`}
+          className={`text ${poke.types[0].type.name} justify-center flex  text-2xl font-semibold`}
         >
           About
         </span>
@@ -151,6 +169,22 @@ export function PokeCardDetailed() {
           height={poke.height}
           moves={poke.moves[0].move.name}
           moves2={poke.moves[1].move.name}
+        />
+        <Parrafo aboutContent={pokeAbout?.flavor_text_entries[0].flavor_text} />
+        <span
+          className={`text ${poke.types[0].type.name} justify-center flex  text-2xl font-semibold`}
+        >
+          Base Stats
+        </span>
+
+        <BaseStats
+          type={poke.types[0].type.name}
+          hpValue={poke.stats[0].base_stat}
+          atkValue={poke.stats[1].base_stat}
+          defValue={poke.stats[2].base_stat}
+          spatkValue={poke.stats[3].base_stat}
+          spdefValue={poke.stats[4].base_stat}
+          spdValue={poke.stats[5].base_stat}
         />
       </section>
     </div>
