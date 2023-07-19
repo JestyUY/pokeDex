@@ -195,3 +195,22 @@
         .bg-poke2 {
             background: var(--type-color);
         }
+
+
+        .bulbasaur, .ivysaur, .venusaur {
+            background-color: #74cb48;
+        } 
+
+        .charmander, .charmeleon, .charizard {
+            background-color: #f57d31;
+        }
+
+        .squirtle, .wartortle, .blastoise {
+            background-color: #6493eb;
+        }
+        .caterpie, .metapod, .butterfree, .weedle, .kakuna ,.beedrill {
+            background-color: #a7b723;
+        }
+        .pidgey, .pidgeotto, .pidgeot, .rattata, .raticate{
+            background-color: #aaa67f;
+        }

@@ -203,6 +203,7 @@ function App() {
             name={poke.name}
             id={poke.url.split("/").at(-2)}
             key={index}
+            className={poke.name}
           />
         ))}
       </ul>

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-export function PokeCard({ name, id }) {
+export function PokeCard({ name, id, className }) {
   const navigate = useNavigate();
 
   return (
     <li
-      className="cursor-pointer rounded-lg w-[104px] h-[108px] bg-slate-200 flex flex-col justify-center relative drop-shadow-[5px_5px_5px_rgba(0,0,0,0.25)]"
+      className={`    cursor-pointer rounded-lg w-[104px] h-[108px] bg-slate-200 flex flex-col justify-center relative drop-shadow-[5px_5px_5px_rgba(0,0,0,0.25)]`}
       onClick={() => {
         navigate(`/${id}`);
       }}
@@ -18,7 +18,9 @@ export function PokeCard({ name, id }) {
         alt=""
       />
 
-      <span className="text-center bg-slate-300 pt-6 rounded-lg absolute bottom-0 left-0 right-0">
+      <span
+        className={`text-center ${className}  pt-6 rounded-lg absolute bottom-0 left-0 right-0`}
+      >
         {name}
       </span>
 
