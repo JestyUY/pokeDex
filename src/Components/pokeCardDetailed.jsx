@@ -254,7 +254,7 @@ export function PokeCardDetailed() {
   }
   return poke ? (
     <div
-      className={`bg ${poke.types[0].type.name}   w-screen h-full relative flex flex-col`}
+      className={`bg ${poke.types[0].type.name}   w-screen h-screen relative flex flex-col`}
     >
       {" "}
       <nav className="flex p-4 gap-2">
