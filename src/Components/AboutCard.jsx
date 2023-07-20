@@ -55,7 +55,7 @@ export function AboutCard({ weight, height, moves, moves2 }) {
           Height
         </span>
       </div>
-      <div className="flex flex-col w-[30%] relative ">
+      <div className="flex flex-col w-[30%] relative h-16">
         <span>{moves}</span>
         <span>{moves2}</span>
         <span className="absolute bottom-0 left-0 right-0 font-light">

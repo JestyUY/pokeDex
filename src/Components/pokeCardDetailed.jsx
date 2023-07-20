@@ -240,7 +240,7 @@ export function PokeCardDetailed() {
 
     getPoke();
     // eslint-disable-next-line react/prop-types
-  }, []);
+  }, [pokeID]);
 
   function backClick() {
     if (poke.id > 1) {
@@ -254,7 +254,7 @@ export function PokeCardDetailed() {
   }
   return poke ? (
     <div
-      className={`bg ${poke.types[0].type.name}   w-screen h-screen relative flex flex-col`}
+      className={`bg ${poke.types[0].type.name}   w-screen h-[130vh] absolute flex flex-col`}
     >
       {" "}
       <nav className="flex p-4 gap-2">
@@ -277,7 +277,7 @@ export function PokeCardDetailed() {
         </button>
       </div>
       <img
-        className="  absolute mx-auto top-20 left-0 right-0 z-20 w-[60%] h-[30%]"
+        className="  absolute mx-auto top-16 left-0 right-0 z-20 w-[60%] h-[30%]"
         src={poke.sprites.other.dream_world.front_default}
         alt=""
       />
