@@ -189,7 +189,7 @@ function App() {
     setFilterQ(results);
   };
   return (
-    <main className="bg-red-700 w-screen h-full flex flex-col items-center font-poppins">
+    <main className="bg-red-700 w-screen h-full flex flex-col items-center font-poppins max-w-md left-0 right-0 m-auto">
       <Header />
       <SearchBar
         buttonIcon={sortPoke === "text" ? numIcon : textFilter}

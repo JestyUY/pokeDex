@@ -16,7 +16,7 @@ export function SearchBar({ handlerClick, buttonIcon, onChange }) {
   );
 
   return (
-    <div className="flex p-6 w-screen">
+    <div className="flex p-6 w-full">
       <button className="bg-white rounded-l-xl p-2 ">{lupa}</button>
       <input
         className="w-screen rounded-r-xl focus:outline-none  "
